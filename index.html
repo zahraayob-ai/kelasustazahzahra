@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Misi Al-Jabbar • 4P2</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:#28152f;background:#f7f1fb}
+.hero{background:linear-gradient(135deg,#281233,#4b2464,#76519a);color:#fff;padding:46px 20px 55px;text-align:center;border-radius:0 0 38px 38px}
+.badge{display:inline-block;border:1px solid #ffffff55;background:#ffffff14;padding:8px 15px;border-radius:99px;font-size:12px}
+h1{font-size:40px;margin:17px 0 8px}.hero p{opacity:.9}
+.wrap{max-width:900px;margin:-25px auto 40px;padding:0 16px}.card{background:#fff;border-radius:25px;padding:25px;margin:18px 0;box-shadow:0 10px 30px #3b1e4f14}
+.card h2{margin-top:0;color:#4b2464}.step{display:flex;gap:15px;align-items:center;padding:17px;background:#faf6fd;border-radius:18px;margin:11px 0;border:1px solid #eadcf1}
+.icon{font-size:28px}.btn{display:inline-block;text-decoration:none;background:#5a2c6b;color:#fff;padding:14px 20px;border-radius:14px;font-weight:bold}
+.video{position:relative;padding-top:56.25%;overflow:hidden;border-radius:18px;background:#eee}.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+label{display:block;color:#4b2464;font-weight:bold;margin:13px 0 5px}input,textarea{width:100%;padding:13px;border:1px solid #d8c5e6;border-radius:12px;font-size:15px}textarea{min-height:90px}
+footer{text-align:center;padding:30px;color:#755b80}
+@media(max-width:600px){h1{font-size:30px}.card{padding:19px}}
+</style>
+</head>
+<body>
+<header class="hero">
+<div class="badge">SMK TAMAN SERI SAUJANA • TINGKATAN 4</div>
+<h1>💜 MISI AL-JABBAR</h1>
+<p>1 Masa Belajar • Pendidikan Islam</p>
+</header>
+
+<main class="wrap">
+<section class="card">
+<h2>🌙 Selamat Datang</h2>
+<p>Lengkapkan tiga misi pembelajaran di bawah. Ikut turutan dan jangan lupa hantar refleksi selepas selesai.</p>
+<div class="step"><div class="icon">🎬</div><div><b>01 • Tonton</b><br>Fahami nota melalui video pembelajaran.</div></div>
+<div class="step"><div class="icon">🎮</div><div><b>02 • Cabar Diri</b><br>Uji kefahaman melalui game.</div></div>
+<div class="step"><div class="icon">📝</div><div><b>03 • Refleksi</b><br>Kongsikan apa yang anda pelajari.</div></div>
+</section>
+
+<section class="card">
+<h2>01 • 🎬 Video Pembelajaran</h2>
+<div class="video"><iframe src="https://docs.google.com/videos/d/1neXaRucocNp_jYXmSnn4UtvUi2EMW61PP9-R5DBk1rk/play?usp=sharing" allowfullscreen></iframe></div>
+</section>
+
+<section class="card">
+<h2>02 • 🎮 Game Al-Jabbar</h2>
+<p>Sudah menonton? Sekarang uji kefahaman anda.</p>
+<a class="btn" href="game.html">🚀 MULA GAME</a>
+</section>
+
+<section class="card">
+<h2>03 • 📝 Refleksi</h2>
+<form action="https://script.google.com/macros/s/AKfycbyoPPi4tXIRHdXmvUfqv6dblEHaMuEC1ClqQaSVlTGD9-UC2Zxql2KJkSKz_Kr9bqQS/exec" method="POST" target="sendFrame">
+<input type="hidden" name="jenis" value="refleksi">
+<label>Nama</label><input name="nama" required>
+<label>1. Apakah perkara baharu yang anda pelajari?</label><textarea name="r1" required></textarea>
+<label>2. Apakah pengajaran daripada Al-Jabbar?</label><textarea name="r2" required></textarea>
+<label>3. Bagaimanakah cara mengelakkan ajaran sesat?</label><textarea name="r3" required></textarea>
+<label style="font-weight:normal"><input type="checkbox" required style="width:auto"> Saya telah menonton video dan melengkapkan game.</label><br><br>
+<button class="btn" type="submit" onclick="setTimeout(()=>document.getElementById('msg').textContent='✅ Refleksi dihantar. Terima kasih!',800)">📤 HANTAR REFLEKSI</button>
+<p id="msg"></p>
+</form><iframe name="sendFrame" style="display:none"></iframe>
+</section>
+</main>
+<footer>💜 Misi Al-Jabbar • #SaujanaChampion</footer>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ms"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Game Al-Jabbar</title>
+<style>
+body{margin:0;font-family:Arial;background:linear-gradient(135deg,#281233,#76519a);min-height:100vh}.box{max-width:680px;margin:auto;padding:20px}.panel{background:#fff;border-radius:25px;padding:24px;box-shadow:0 15px 40px #0003}h1{text-align:center;color:#5a2c6b}.top{display:flex;justify-content:space-between;background:#f7effc;padding:13px;border-radius:14px}.ans{width:100%;text-align:left;padding:14px;margin:8px 0;border:1px solid #ddc9e8;border-radius:13px;background:#fbf8fd;cursor:pointer}.ans:hover{background:#efe2f8}.btn{border:0;background:#5a2c6b;color:#fff;padding:13px 19px;border-radius:13px;cursor:pointer}.hide{display:none}input{width:100%;padding:13px;border:1px solid #ccc;border-radius:10px}
+</style></head>
+<body><div class="box"><div class="panel">
+<h1>💜 MISI AL-JABBAR</h1>
+<div id="start"><p>Masukkan nama:</p><input id="name"><br><br><button class="btn" onclick="start()">MULA</button></div>
+<div id="game" class="hide"><div class="top"><span>Skor: <b id="score">0</b></span><span><b id="num">1</b>/10</span></div><h3 id="question"></h3><div id="answers"></div><p id="feed"></p></div>
+<div id="end" class="hide" style="text-align:center"><h2>🎉 Tamat!</h2><p id="result"></p><a href="index.html">← Kembali ke website</a></div>
+</div></div>
+<script>
+const URL="https://script.google.com/macros/s/AKfycbyoPPi4tXIRHdXmvUfqv6dblEHaMuEC1ClqQaSVlTGD9-UC2Zxql2KJkSKz_Kr9bqQS/exec";
+const q=[
+["Apakah maksud Al-Jabbar?",["Allah Maha Berkuasa secara mutlak untuk melakukan segala kehendak-Nya.","Allah Maha Mengetahui sahaja","Allah Maha Pengampun sahaja","Allah Maha Mendengar sahaja"]],
+["Siapakah yang menguasai seluruh alam?",["Allah SWT","Manusia","Malaikat","Jin"]],
+["Sikap apakah yang perlu dielakkan?",["Takabbur","Sabar","Syukur","Tawaduk"]],
+["Mengapakah manusia perlu merendah diri di hadapan Allah?",["Kerana Allah Maha Berkuasa","Kerana manusia sentiasa betul","Kerana manusia mengetahui semua perkara","Kerana dunia kekal"]],
+["Apakah maksud ajaran sesat?",["Ajaran yang bercanggah dengan al-Quran dan al-Sunnah","Ajaran yang sukar difahami","Ajaran yang menarik","Semua pendapat manusia"]],
+["Antara berikut ialah ciri ajaran sesat:",["Mentafsir al-Quran dengan logik semata-mata tanpa disiplin ilmu","Mengikut al-Quran dan al-Sunnah","Belajar dengan guru bertauliah","Menghormati ulama"]],
+["Kesan mengabaikan iman kepada Al-Jabbar?",["Sombong dan angkuh","Lebih tawaduk","Lebih taat","Lebih bersyukur"]],
+["Apabila diuji, kita hendaklah:",["Bersabar dan yakin dengan kekuasaan Allah","Berputus asa","Menyalahkan Allah","Meninggalkan solat"]],
+["Perbuatan Allah mengandungi hikmah kerana:",["Allah Maha Mengetahui segala sesuatu","Manusia mengetahui semua perkara","Tiada sebab","Manusia memaksa"]],
+["Cara mengelakkan ajaran sesat:",["Berpegang kepada al-Quran dan al-Sunnah serta rujuk pihak berautoriti","Percaya semua dakwaan","Ikut media sosial sahaja","Tafsir sesuka hati"]]
+];
+let i=0,s=0,n="";
+function start(){n=document.getElementById("name").value.trim();if(!n)return alert("Sila masukkan nama.");document.getElementById("start").classList.add("hide");document.getElementById("game").classList.remove("hide");show()}
+function show(){num.textContent=i+1;question.textContent=q[i][0];answers.innerHTML="";q[i][1].forEach((x,j)=>{let b=document.createElement("button");b.className="ans";b.textContent=x;b.onclick=()=>pick(j);answers.appendChild(b)})}
+function pick(j){document.querySelectorAll(".ans").forEach(x=>x.disabled=true);if(j===0){s+=10;feed.textContent="✅ Betul!"}else feed.textContent="❌ Belum tepat.";score.textContent=s;setTimeout(()=>{i++;if(i<10)show();else finish()},600)}
+function finish(){game.classList.add("hide");end.classList.remove("hide");result.textContent=n+" mendapat "+s+"/100.";fetch(URL,{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams({jenis:"game",nama:n,skor:s,betul:s/10,jumlah:10})}).catch(()=>{})}
+</script></body></html>
